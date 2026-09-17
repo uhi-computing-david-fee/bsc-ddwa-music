@@ -1,0 +1,136 @@
+:host {
+  display: block;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  background: rgba(11, 13, 14, 0.88);
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-header__inner {
+  width: min(calc(100% - 3rem), var(--content-width));
+  min-height: 78px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: var(--space-6);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.brand__mark {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  background: var(--color-primary);
+  border-radius: 50%;
+
+  span {
+    display: block;
+    width: 3px;
+
+    background: #08120c;
+    border-radius: 999px;
+
+    &:nth-child(1) {
+      height: 12px;
+    }
+
+    &:nth-child(2) {
+      height: 20px;
+    }
+
+    &:nth-child(3) {
+      height: 15px;
+    }
+  }
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand__name {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.brand__tagline {
+  margin-top: 2px;
+
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.library-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.library-summary__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.library-summary__value {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  font-weight: 700;
+  line-height: 1;
+}
+
+.library-summary__value--favourite span {
+  color: var(--color-primary);
+  font-size: 0.9rem;
+}
+
+.library-summary__label {
+  margin-top: 0.3rem;
+
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 600px) {
+  .app-header__inner {
+    width: min(calc(100% - 2rem), var(--content-width));
+    min-height: 70px;
+  }
+
+  .brand__tagline,
+  .library-summary__label {
+    display: none;
+  }
+
+  .brand__mark {
+    width: 38px;
+    height: 38px;
+  }
+}

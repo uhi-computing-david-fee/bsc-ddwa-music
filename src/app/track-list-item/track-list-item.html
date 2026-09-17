@@ -1,1 +1,39 @@
-<p>track-list-item works!</p>
+<article class="track">
+  <span class="track__position">
+    {{ position.toString().padStart(2, '0') }}
+  </span>
+
+  <div class="track__identity">
+    <div class="track__artwork">
+      {{ track.title.charAt(0) }}
+    </div>
+
+    <div>
+      <h3>{{ track.title }}</h3>
+
+      <p>
+        {{ track.artist }}
+        <span>·</span>
+        {{ track.year }}
+        <span>·</span>
+        {{ formatDuration(track.duration) }}
+      </p>
+    </div>
+  </div>
+
+  <span class="track__album">
+    {{ track.album }}
+  </span>
+
+  <span class="track__genre">
+    {{ track.genre }}
+  </span>
+
+  <button
+    class="track__favourite"
+    [class.track__favourite--active]="track.favourite"
+    aria-label="Favourite track"
+  >
+    {{ track.favourite ? '♥' : '♡' }}
+  </button>
+</article>

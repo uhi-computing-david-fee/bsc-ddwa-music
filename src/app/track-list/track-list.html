@@ -1,1 +1,23 @@
-<p>track-list works!</p>
+<section class="track-list">
+  <div class="track-list__heading">
+    <h2>Tracks</h2>
+    <span>{{ tracks.length }} songs</span>
+  </div>
+
+  <div class="track-list__columns">
+    <span>#</span>
+    <span>Track</span>
+    <span>Album</span>
+    <span>Genre</span>
+    <span></span>
+  </div>
+
+  <div class="track-list__items">
+    @for (track of tracks; track track.id; let i = $index) {
+      <app-track-list-item
+        [track]="track"
+        [position]="i + 1"
+      />
+    }
+  </div>
+</section>

@@ -1,0 +1,12 @@
+.app-shell {
+  width: min(calc(100% - 3rem), var(--content-width));
+  margin: 0 auto;
+  padding: var(--space-8) 0;
+}
+
+@media (max-width: 600px) {
+  .app-shell {
+    width: min(calc(100% - 2rem), var(--content-width));
+    padding: var(--space-6) 0;
+  }
+}
