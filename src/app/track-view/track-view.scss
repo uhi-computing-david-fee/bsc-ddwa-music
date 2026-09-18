@@ -1,5 +1,13 @@
 :host {
-  display: block;
+  display: contents;
+}
+
+.track-view__controls {
+  grid-area: controls;
+}
+
+app-track-list {
+  grid-area: tracks;
 }
 
 .track-view {

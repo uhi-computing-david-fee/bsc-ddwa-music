@@ -2,11 +2,28 @@
   width: min(calc(100% - 3rem), var(--content-width));
   margin: 0 auto;
   padding: var(--space-8) 0;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  grid-template-areas:
+    "controls controls"
+    "tracks favourites";
+
+  align-items: start;
+  column-gap: var(--space-6);
+  row-gap: var(--space-6);
 }
 
-@media (max-width: 600px) {
+app-favourites {
+  grid-area: favourites;
+}
+
+@media (max-width: 1000px) {
   .app-shell {
-    width: min(calc(100% - 2rem), var(--content-width));
-    padding: var(--space-6) 0;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "controls"
+      "tracks"
+      "favourites";
   }
 }

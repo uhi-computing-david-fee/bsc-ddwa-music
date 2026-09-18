@@ -1,1 +1,44 @@
-<p>favourites works!</p>
+<aside class="favourites">
+  <div class="favourites__header">
+    <div>
+      <p class="favourites__eyebrow">Saved</p>
+      <h2>Favourites</h2>
+    </div>
+
+    <span class="favourites__count">
+      {{ favouriteTracks.length }}
+    </span>
+  </div>
+
+  <p class="favourites__description">
+    The tracks you keep coming back to.
+  </p>
+
+  <div class="favourites__list">
+    @for (track of favouriteTracks; track track.id) {
+      <article class="favourite">
+        <div class="favourite__artwork">
+          {{ track.title.charAt(0) }}
+        </div>
+
+        <div class="favourite__details">
+          <h3>{{ track.title }}</h3>
+          <p>{{ track.artist }}</p>
+        </div>
+
+        <button
+          class="favourite__remove"
+          aria-label="Remove from favourites"
+          (click)="onRemove(track)"
+        >
+          ♥
+        </button>
+      </article>
+    }
+  </div>
+
+  <div class="favourites__footer">
+    <span class="favourites__heart">♥</span>
+    <span>{{ favouriteTracks.length }} saved tracks</span>
+  </div>
+</aside>

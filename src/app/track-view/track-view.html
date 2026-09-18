@@ -1,19 +1,55 @@
-<section class="track-view">
+<div class="track-view__controls">
   <div class="track-view__intro">
     <p class="track-view__eyebrow">Your Library</p>
+
     <h1>Find something worth hearing.</h1>
+
     <p class="track-view__description">
       Browse your collection, explore genres and keep your favourites close.
     </p>
   </div>
 
   <div class="genre-filters">
-    <button class="genre-filter genre-filter--active">All</button>
-    <button class="genre-filter">Rock</button>
-    <button class="genre-filter">Electronic</button>
-    <button class="genre-filter">Jazz</button>
-    <button class="genre-filter">Indie</button>
-  </div>
+    <button 
+      class="genre-filter genre-filter"
+      [class.genre-filter--active]="selectedGenre === 'All'"
+      (click)="filterByGenre('All')"
+      >
+        All
+    </button>
 
-  <app-track-list />
-</section>
+    <button 
+      class="genre-filter"
+      (click)="filterByGenre('Rock')"
+      [class.genre-filter--active]="selectedGenre === 'Rock'"
+    >
+      Rock
+    </button>
+
+    <button 
+      class="genre-filter"
+      (click)="filterByGenre('Electronic')"
+      [class.genre-filter--active]="selectedGenre === 'Electronic'"
+    >
+      Electronic
+    </button>
+
+    <button 
+      class="genre-filter"
+      (click)="filterByGenre('Jazz')"
+      [class.genre-filter--active]="selectedGenre === 'Jazz'"
+    >
+      Jazz
+    </button>
+
+    <button
+      class="genre-filter"
+      (click)="filterByGenre('Indie')"
+      [class.genre-filter--active]="selectedGenre === 'Indie'"
+    >
+      Indie
+    </button>
+  </div>
+</div>
+
+<app-track-list [tracks]="tracks" />

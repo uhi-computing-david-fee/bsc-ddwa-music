@@ -33,6 +33,7 @@
     class="track__favourite"
     [class.track__favourite--active]="track.favourite"
     aria-label="Favourite track"
+    (click)="toggleFavourite()"
   >
     {{ track.favourite ? '♥' : '♡' }}
   </button>
