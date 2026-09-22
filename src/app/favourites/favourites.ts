@@ -14,7 +14,7 @@ export class Favourites implements OnInit {
   favouriteTracks: Track[] = [];
 
   ngOnInit() {
-    this.trackService.getTracks().subscribe({
+    this.trackService.tracks$.subscribe({
       next: tracks => {
         this.favouriteTracks = tracks.filter(
           track => track.favourite
@@ -29,12 +29,6 @@ export class Favourites implements OnInit {
   onRemove(track: Track) {
   // Remove from local array immediately
     this.favouriteTracks = this.favouriteTracks.filter(favourite => favourite.id !== track.id);
-    this.trackService.removeFavourite(track.id).subscribe({
-      next: () => {},
-      error: () => {
-        // Put it back if the request failed
-        this.favouriteTracks.push(track);
-      }
-    })
+    this.trackService.removeFavourite(track.id);
   }
 }

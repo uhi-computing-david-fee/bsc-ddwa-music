@@ -19,18 +19,12 @@ export class TrackListItem {
     // Already a favourtie - remove
     if (this.track.favourite) {
       this.track.favourite = false;
-      this.trackService.removeFavourite(this.track.id).subscribe({
-        next: () => {},
-        error: () => { this.track.favourite = true } // revert on error
-      });
+      this.trackService.removeFavourite(this.track.id);
     } 
     // Not a favourite - add
     else {
       this.track.favourite = true;
-      this.trackService.addFavourite(this.track.id).subscribe({
-        next: () => {},
-        error: () => { this.track.favourite = false } // revert on error
-      });
+      this.trackService.addFavourite(this.track.id)
     }
   }
 

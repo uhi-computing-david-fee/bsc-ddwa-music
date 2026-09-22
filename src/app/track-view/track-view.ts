@@ -16,7 +16,7 @@ export class TrackView {
   selectedGenre = 'All';
 
   ngOnInit() {
-    this.trackService.getTracks().subscribe({
+    this.trackService.tracks$.subscribe({
       next: tracks => {
         this.tracks = tracks;
       },
@@ -28,32 +28,13 @@ export class TrackView {
 
   filterByGenre(genre: string) {
     this.selectedGenre = genre; // set for class control
-    
-    this.trackService.getTracks().subscribe({
-      next: tracks => {
 
-        // Start with a fresh copy from the API
-        this.tracks = tracks;
+    // grab fresh copy from retained value
+    this.tracks = this.trackService.tracks$.value.slice(); 
 
-        // No filtering required
-        if (genre === 'All') {
-          return;
-        }
+    if (genre === 'All') { return; }
 
-        // Destructively remove tracks that don't match
-        for (let i = this.tracks.length - 1; i >= 0; i--) {
-
-          if (this.tracks[i].genre !== genre) {
-            this.tracks.splice(i, 1);
-          }
-
-        }
-
-      },
-      error: error => {
-        console.error(error);
-      }
-    });
-
+    // perform filter
+    this.tracks = this.tracks.filter(t => t.genre == this.selectedGenre);
   }
 }

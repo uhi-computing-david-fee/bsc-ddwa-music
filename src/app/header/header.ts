@@ -14,7 +14,7 @@ export class Header implements OnInit {
   favouriteCount = 0;
 
   ngOnInit() {
-    this.trackService.getTracks().subscribe({
+    this.trackService.tracks$.subscribe({
       next: tracks => {
         this.trackCount = tracks.length;
 
